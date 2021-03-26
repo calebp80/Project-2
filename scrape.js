@@ -4,10 +4,12 @@ const cheerio = require('cheerio');
 axios.get('http://hauntedhouses.com/').then(response => {
     const $ = cheerio.load(response.data);
 
-    $('div.item').each((i, element) => {
+
+    //first working on image url
+    $('li.menu-item-type-taxonomy').each((i, element) => {
         const link = $(element)
-            .find('div.url')
-            //.attr('url');
+        .find('a')
+        .attr('href');
 
         console.log(link);
 
@@ -15,7 +17,8 @@ axios.get('http://hauntedhouses.com/').then(response => {
 });
 
 // const urlElems = $('h2.featured-posts--info')
-//   for (let i = 0; i < urlElems.length; i++) 
+//for (let i = 0; i < link.length; i++)
+//   c 
 
 
 //const h3 = $('h3.component-map--header').text();
