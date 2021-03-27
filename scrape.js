@@ -14,7 +14,6 @@ $('nav.main-navigation').each((i, element) => {
     });
 });
 
-    //first working on image url
 //     $('li.menu-item-type-taxonomy').each((i, element) => {
 //         const link = $(element)
 //         .find('a')

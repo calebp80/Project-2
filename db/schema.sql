@@ -1,0 +1,4 @@
+
+DROP DATABASE IF EXISTS haunted;
+
+CREATE DATABASE haunted;
