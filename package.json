@@ -23,7 +23,7 @@
   "name": "project-2",
   "description": "Our first full stack application!",
   "version": "1.0.0",
-  "main": "scrape.js",
+  "main": "server.js",
   "devDependencies": {},
   "repository": {
     "type": "git",
