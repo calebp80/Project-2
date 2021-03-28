@@ -1,14 +1,14 @@
 const router = require("express").Router();
 const { Review } = require("../../models/");
-// const withAuth = require("../../utils/auth");
+const withAuth = require("../../utils/auth");
 
 
 
 
-//this works yay!
+// doesn't work yet
 router.get('/', (req, res) => {
   Review.findAll()
-    .then(dbCommentData => res.json(dbCommentData))
+    .then(dbReviewData => res.json(dbReviewData))
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
