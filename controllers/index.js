@@ -6,7 +6,7 @@ const reviewRoutes = require('./api/review-routes');
 
  //router.use('./api/user-routes', userRoutes);
 // router.use('/posts', postRoutes);
-//router.use('/review', reviewRoutes);
+router.use('/review', reviewRoutes);
 
 
 
