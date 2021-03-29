@@ -79,9 +79,14 @@ router.post('/', (req, res) => {
     });
 });
 
-router.post('/find', (req, res) => {
+
+router.post('/login', (req, res) => {
+    console.log("reach/find-route**********");
+    console.log(req.body.username);
+console.log(req.body.password);
   // expects {email: 'lernantino@gmail.com', password: 'password1234'}
   User.findOne({
+    
     where: {
       username: req.body.username
     }
