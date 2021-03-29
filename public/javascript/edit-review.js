@@ -7,7 +7,7 @@ const id = window.location.toString().split('/')[
     window.location.toString().split('/').length -1
 ];
 
-await fetch(`/api/posts/${id}`, {
+await fetch(`/review/${id}`, {
 
 method: 'PUT',
 body: JSON.stringify({
