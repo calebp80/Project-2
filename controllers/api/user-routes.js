@@ -108,7 +108,7 @@ console.log(req.body.password);
       req.session.username = dbUserData.username;
       req.session.loggedIn = true;
   
-      res.json({ user: dbUserData, message: 'You are now logged in!' });
+      res.json({ user: dbUserData, message: 'Let the Haunting begin!' });
     });
   });
   
@@ -117,7 +117,7 @@ console.log(req.body.password);
 router.post('/logout', (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
-      res.status(204).end();
+      res.status(404).json({ message: 'Have a Scary Day!' }).end();
     });
   }
   else {
@@ -156,7 +156,7 @@ router.delete('/:id', (req, res) => {
   })
     .then(dbUserData => {
       if (!dbUserData) {
-        res.status(404).json({ message: 'No user found with this id' });
+        res.status(404).json({ message: 'BOO! ' });
         return;
       }
       res.json(dbUserData);
@@ -169,4 +169,4 @@ router.delete('/:id', (req, res) => {
 
 module.exports = router;
 
-  module.exports = router;
+  
