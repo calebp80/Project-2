@@ -1,10 +1,10 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const { Review, User, Location } = require('../models');
+const { Review, User, } = require('../models');
 const withAuth = require('../utils/auth');
 
 // get all reviews for dashboard
-router.get('/', withAuth, (req, res) => {
+router.get('/review', withAuth, (req, res) => {
   console.log(req.session);
   console.log('======================');
   Post.findAll({
@@ -64,7 +64,7 @@ router.get('/edit/:id', withAuth, (req, res) => {
     ]
   })
     .then(dbReviewData => {
-      if (dbPostData) {
+      if (dbReviewData) {
         const review = dbReviewData.get({ plain: true });
         
         res.render('edit-review', {

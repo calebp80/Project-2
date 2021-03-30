@@ -1,14 +1,15 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const { Location, User, Review } = require('../models');
+const { User, Review } = require('../models');
+const bcrypt = require('bcrypt');
 
 // get all reviews for homepage
-router.get("/all", (req, res) => {
+router.get("/review", (req, res) => {
     Review.findAll({
       include: [User],
     })
       .then((dbReviewData) => {
-        const reviews = dbReviewData.map((review) => get({ plain: true }));
+        const review = dbReviewData.map((review) => get({ plain: true }));
         res.render("all-review", { review });
       })
       .catch((err) => {
@@ -31,7 +32,7 @@ router.get('/review/:id', (req, res) => {
       include: [
         {
           model: Review,
-          attributes: ['id', 'review_text', 'review_id', 'user_id', 'createdAt'],
+          attributes: ['id', 'user_id', 'createdAt'],
           include: {
             model: User,
             attributes: ['username']

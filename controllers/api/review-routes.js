@@ -30,7 +30,7 @@ router.post("/create", (req, res) => {
 });
 
 //delete a review by id
-router.delete("/:id", (req, res) => {
+router.delete("/delete/:id", (req, res) => {
   if (req.session) {
     Review.destroy({
       where: {

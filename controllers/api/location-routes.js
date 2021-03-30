@@ -3,7 +3,7 @@ const { Location } = require("../../models/");
 const withAuth = require("../../utils/auth");
 
 //find all locations
-router.get("/", (req, res) => {
+router.get("/all", (req, res) => {
   Location.findAll()
     .then((dbLocationData) => res.json(dbLocationData))
     .catch((err) => {
@@ -47,7 +47,7 @@ router.get("/:id", (req, res) => {
 // });
 
 //delete a location by id
-router.delete("/:id", (req, res) => {
+router.delete("/delete/:id", (req, res) => {
   if (req.session) {
     Location.destroy({
       where: {
