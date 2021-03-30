@@ -1,10 +1,10 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const { Review, User, Location } = require('../models');
+const { Review, User, } = require('../models');
 const withAuth = require('../utils/auth');
 
 // get all reviews for dashboard
-router.get('/reviews', withAuth, (req, res) => {
+router.get('/review', withAuth, (req, res) => {
   console.log(req.session);
   console.log('======================');
   Post.findAll({
