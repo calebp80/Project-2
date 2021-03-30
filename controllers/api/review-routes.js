@@ -13,7 +13,7 @@ router.get("/", (req, res) => {
 });
 
 //create new review
-router.post("/post", (req, res) => {
+router.post("/create", (req, res) => {
   // expects => {body: "This is the comment", user_id: 1, post_id: 2}
   if (req.session) {
     Review.create({
