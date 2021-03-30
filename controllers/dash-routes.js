@@ -64,7 +64,7 @@ router.get('/edit/:id', withAuth, (req, res) => {
     ]
   })
     .then(dbReviewData => {
-      if (dbPostData) {
+      if (dbReviewData) {
         const review = dbReviewData.get({ plain: true });
         
         res.render('edit-review', {
