@@ -789,7 +789,7 @@ const scrapeDirectory = (startIndex) => {
 const scrapeLocations = (startIndex) => {
     const promises = [];
     
-    for (let i=startIndex;i<(startIndex + 25);i++) {
+    for (let i=startIndex;i<(startIndex + 2);i++) {
         if (i >= locationsToScrape.length) break;
 
         console.log(`Link added: ${locationsToScrape[i]}`);
@@ -821,18 +821,16 @@ const scrapeLocations = (startIndex) => {
                 scrapedLocations[k].more_info_url = url;
             }
 
-            console.log('http://hauntedhouses.com/west-virginia' + response[0].request.path);
+            // console.log('http://hauntedhouses.com/west-virginia' + response[0].request.path);
 
             
-            
+            $('.editor-content h2 + p').each((index, element) => {
+                // console.log(Object.keys(element.children))
+                console.log(element.children[0].data);
+            });
             
             // description: taken from p tags between first h2 under .editor-content and next h2
             // address: taken from p tag after h2 with text = LOCATION
-    
-            // $('.content-post--link').each((index, element) => {
-            //     console.log(element.attribs.href);
-            //     scrapedLocations.push(element.attribs.href);
-            // });
         }
     }).then(() => {
         // bulk insert data into sequelize db
