@@ -4,7 +4,7 @@ const { Review, User, Location } = require('../models');
 const withAuth = require('../utils/auth');
 
 // get all reviews for dashboard
-router.get('/', withAuth, (req, res) => {
+router.get('/reviews', withAuth, (req, res) => {
   console.log(req.session);
   console.log('======================');
   Post.findAll({
