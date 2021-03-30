@@ -1,7 +1,7 @@
 const axios = require('axios');
 const fs = require('fs');
 const cheerio = require('cheerio');
-const { Location } = require('./models');
+const { Location } = require('./models/location');
 
 const scrapedLinks = [];
 const scrapedLocations = [];
