@@ -7,7 +7,7 @@ const Sequelize = require("sequelize");
 // Include your MySQL user/password information
 const sequelize = process.env.JAWSDB_URL
   ? new Sequelize(process.env.JAWSDB_URL)
-  : new Sequelize("haunted", "root", "password", {
+  : new Sequelize("haunted", "root", "", {
       host: "localhost",
       port: 3306,
       dialect: "mysql",
