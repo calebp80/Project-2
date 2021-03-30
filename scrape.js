@@ -1,6 +1,7 @@
 const axios = require('axios');
 const fs = require('fs');
 const cheerio = require('cheerio');
+const { Location } = require('./models');
 
 const scrapedLinks = [];
 const scrapedLocations = [];
@@ -789,7 +790,7 @@ const scrapeDirectory = (startIndex) => {
 const scrapeLocations = (startIndex) => {
     const promises = [];
     
-    for (let i=startIndex;i<(startIndex + 2);i++) {
+    for (let i=startIndex;i<(startIndex + 25);i++) {
         if (i >= locationsToScrape.length) break;
 
         console.log(`Link added: ${locationsToScrape[i]}`);
@@ -817,22 +818,22 @@ const scrapeLocations = (startIndex) => {
 
             // more_infor_url: from response.data
             for (let k=0;k<scrapedLocations.length;k++) {
-                let url = 'http://hauntedhouses.com/west-virginia' + response[k].request.path;
+                let url = 'http://hauntedhouses.com' + response[k].request.path;
                 scrapedLocations[k].more_info_url = url;
+                
             }
 
-            // console.log('http://hauntedhouses.com/west-virginia' + response[0].request.path);
+            for (let k=0;k<scrapedLocations.length;k++) {
+                scrapedLocations[i].description = $('.bullet h4 em').text();
+            }
 
-            
-            $('.editor-content h2 + p').each((index, element) => {
-                // console.log(Object.keys(element.children))
-                console.log(element.children[0].data);
-            });
-            
-            // description: taken from p tags between first h2 under .editor-content and next h2
             // address: taken from p tag after h2 with text = LOCATION
+            for (let k=0;k<scrapedLocations.length;k++) {
+                scrapedLocations[i].address = $('h2:contains("LOCATION") + p').text();
+            }
         }
     }).then(() => {
+        // at top of file, require Location model
         // bulk insert data into sequelize db
         console.log('// TODO: Write data to db');
         console.log(scrapedLocations);
@@ -840,6 +841,8 @@ const scrapeLocations = (startIndex) => {
         console.log(err);
     });
 };
+
+
 
 switch (process.argv[2]) {
     case 'directory':
