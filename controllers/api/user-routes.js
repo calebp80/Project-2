@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const { User, Post, Comment } = require("../../models");
 const withAuth = require("../../utils/auth");
+const bcrypt = require('bcrypt');
 
 //find all users
 router.get("/all", (req, res) => {
@@ -12,7 +13,7 @@ router.get("/all", (req, res) => {
     });
 });
 
-router.post("/", (req, res) => {
+router.post("/signup", (req, res) => {
   // expects username, email, password
   User.create({
     username: req.body.username,
@@ -44,7 +45,7 @@ router.post("/login", (req, res) => {
     },
   }).then((dbUserData) => {
     if (!dbUserData) {
-      res.status(400).json({ message: "No user with that name!" });
+      res.status(400).json({ message: "No ghouls with that name!" });
       return;
     }
 
@@ -75,7 +76,7 @@ router.post("/logout", (req, res) => {
   }
 });
 
-router.put("/:id", (req, res) => {
+router.put("/update/:id", (req, res) => {
   // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
 
   // pass in req.body instead to only update what's passed through
@@ -98,7 +99,7 @@ router.put("/:id", (req, res) => {
     });
 });
 
-router.delete("/:id", (req, res) => {
+router.delete("/delete/:id", (req, res) => {
   User.destroy({
     where: {
       id: req.params.id,
