@@ -835,6 +835,7 @@ const scrapeLocations = (startIndex) => {
     }).then(() => {
         // at top of file, require Location model
         // bulk insert data into sequelize db
+        
         console.log('// TODO: Write data to db');
         console.log(scrapedLocations);
     }).catch(err => {
