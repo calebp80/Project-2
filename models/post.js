@@ -1,29 +1,17 @@
-// title: {
-    //   type: DataTypes.STRING,
-    //   allowNull: false,
-    //   validate: {
-    //     len: [1, 160]
-    //   }
-    // },
-    // body: {
-    //   type: DataTypes.TEXT,
-    //   allowNull: false,
-    //   validate: {
-    //     len: [1, 160]
-    //   }
+const { Model, DataTypes } = require('sequelize');
+const sequelize = require('../config/connection');
 
+class Post extends Model {}
 
+Post.init(
+    {
+        title: DataTypes.STRING,
+        body: DataTypes.STRING,
+    },
 
-// title: {
-    //   type: DataTypes.STRING,
-    //   allowNull: false,
-    //   validate: {
-    //     len: [1, 160]
-    //   }
-    // },
-    // body: {
-    //   type: DataTypes.TEXT,
-    //   allowNull: false,
-    //   validate: {
-    //     len: [1, 160]
-    //   }
+    {
+        sequelize
+    }
+);
+
+module.exports = Post;
