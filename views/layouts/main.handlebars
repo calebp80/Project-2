@@ -35,10 +35,174 @@
         <div id="map"></div>
         <div id="map"></div>
 <script src="../../models/main.js"></script>
-<script async
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwFT8x2XVd9_5nBdYwRsGS-52FIeQxaiE&callback=initMap">
+<script>
+            function initMap () {
+                let options = {
+                    zoom: 4,
+                    center: { lat: 37.0902, lng: -95.7129 },
+                }
+                let map = new google.maps.Map(document.getElementById('map'), options);
+                let markers = [
+                {
+                    coords: {lat: 38.2106, lng: -119.0171 },
+                    iconImage: 'https://img.icons8.com/emoji/50/000000/ghost-emoji.png',
+                    content: '<h1>Bodie Cemetary: Los Angeles, CA</h1>'
+                },
+                {
+                    coords: {lat: 38.2117, lng: -119.0113 },
+                    iconImage: 'https://img.icons8.com/emoji/50/000000/ghost-emoji.png',
+                    content: '<h1>Gregory House Bridgeport, CA</h1>'
+                },
+                {
+                    coords: {lat: 34.1148, lng: -118.3747 },
+                    iconImage: 'https://img.icons8.com/emoji/50/000000/ghost-emoji.png',
+                    content: '<h1> Bessies Love cabin Los Angeles, CA</h1>'
+                },
+                 {
+                    coords: {lat: 34.1070, lng: -118.3759 },
+                    iconImage: 'https://img.icons8.com/emoji/50/000000/ghost-emoji.png',
+                    content: '<h1> The comedy store Los Angeles, CA</h1>'
+                },
+                {
+                    coords: {lat: 34.0701, lng: -118.4245 },
+                    iconImage: 'https://img.icons8.com/emoji/50/000000/ghost-emoji.png',
+                    content: '<h1> Jean Harlows Westwood home Los Angeles, CA</h1>'
+                },
+                {
+                    coords: {lat: 34.1045, lng: -118.3499 },
+                    iconImage: 'https://img.icons8.com/emoji/50/000000/ghost-emoji.png',
+                    content: ‘<h1>  Nelson House Hollywood, CA</h1>’
+                },
+                {
+                    coords: {lat: 34.1028, lng: -118.3258 },
+                    iconImage: 'https://img.icons8.com/emoji/50/000000/ghost-emoji.png',
+                    content: '<h1>  The Hollywood Pantages Theater  Hollywood, CA</h1>'
+                },
+            {
+                    coords: {lat: 34.1024, lng: -118.3258 },
+                    iconImage: 'https://img.icons8.com/emoji/50/000000/ghost-emoji.png',
+                    content: '<h1>  The Hollywood Roosevelt Hotel  Hollywood, CA</h1>'
+                },
+            {
+                    coords: {lat: 34.1024, lng: -118.3258 },
+                    iconImage: 'https://img.icons8.com/emoji/50/000000/ghost-emoji.png',
+                    content: '<h1>  The Hollywood Roosevelt Hotel  Hollywood, CA</h1>'
+                },
+                {
+                    coords: {lat: 34.1029, lng: -118.3271 },
+                    iconImage: 'https://img.icons8.com/emoji/50/000000/ghost-emoji.png',
+                    content: ‘<h1> Club Avalon Hollywood, CA</h1>’
+                },
+                {
+                    coords: {lat: 36.5978, lng: -121.8976 },
+                    iconImage: 'https://img.icons8.com/emoji/50/000000/ghost-emoji.png',
+                    content: ‘<h1> Colton Hall Museum Monterey, CA</h1>’
+                },
+                {
+                    coords: {lat: 36.5957, lng: -121.8900 },
+                    iconImage: 'https://img.icons8.com/emoji/50/000000/ghost-emoji.png',
+                    content: ‘<h1> Presidio Chapel and Rectory Monterey, CA</h1>’
+                },
+                {
+                    coords: {lat: 32.7518, lng: -117.1932 },
+                    iconImage: 'https://img.icons8.com/emoji/50/000000/ghost-emoji.png',
+                    content: ‘<h1> El Camp Santo Cemetary San Diego, CA</h1>’
+                },
+                {
+                    coords: {lat: 32.7104, lng: -117.1614 },
+                    iconImage: 'https://img.icons8.com/emoji/50/000000/ghost-emoji.png',
+                    content: ‘<h1> Horton Grand Hotel San Diego, CA</h1>’
+                },
+                {
+                    coords: {lat: 32.7204, lng: -117.1735 },
+                    iconImage: 'https://img.icons8.com/emoji/50/000000/ghost-emoji.png',
+                    content: ‘<h1> Star of India San Diego, CA</h1>’
+                },
+                 {
+                    coords: {lat: 38.7324, lng: -120.8086 },
+                    iconImage: 'https://img.icons8.com/emoji/50/000000/ghost-emoji.png',
+                    content: ‘<h1> Bee Bennett Mansion Placerville, CA</h1>’
+                },
+                 {
+                    coords: {lat: 38.7283, lng: -120.8025 },
+                    iconImage: 'https://img.icons8.com/emoji/50/000000/ghost-emoji.png',
+                    content: ‘<h1> Cary House Hotel Placerville, CA</h1>’
+                },
+                {
+                    coords: {lat: 38.5760, lng: -121.4964 },
+                    iconImage: 'https://img.icons8.com/emoji/50/000000/ghost-emoji.png',
+                    content: ‘<h1> Sacramento Library Sacramento, CA</h1>’
+                },
+                {
+                    coords: {lat: 38.5763, lng: -121.4978 },
+                    iconImage: 'https://img.icons8.com/emoji/50/000000/ghost-emoji.png',
+                    content: ‘<h1> Stanford Mansion Sacramento, CA</h1>’
+                },
+                 {
+                    coords: {lat: 35.6258, lng: -120.6916 },
+                    iconImage: 'https://img.icons8.com/emoji/50/000000/ghost-emoji.png',
+                    content: ‘<h1> Paso Robles Inn Paso Robles, CA</h1>’
+                },
+                {
+                    coords: {lat: 35.3777, lng: -119.0215 },
+                    iconImage: 'https://img.icons8.com/emoji/50/000000/ghost-emoji.png',
+                    content: ‘<h1> Fox Theater Bakersfield, CA</h1>’
+                },
+                {
+                    coords: {lat: 35.3923, lng: -119.0209 },
+                    iconImage: 'https://img.icons8.com/emoji/50/000000/ghost-emoji.png',
+                    content: ‘<h1> Kern County Museum Pioneer Village Bakersfield, CA</h1>’
+                },
+                {
+                    coords: {lat: 37.7728, lng: -122.3025 },
+                    iconImage: 'https://img.icons8.com/emoji/50/000000/ghost-emoji.png',
+                    content: ‘<h1> The USS Hornet – Sea, Air, and Space Museum Alameda, CA</h1>’
+                },
+                {
+                    coords: {lat: 34.9049, lng: -117.0249 },
+                    iconImage: 'https://img.icons8.com/emoji/50/000000/ghost-emoji.png',
+                    content: ‘<h1> Casa de Desierto Harvey House Museum Barstow, CA</h1>’
+                },
+                {
+                    coords: {lat: 37.7908, lng: -122.4125 },
+                    iconImage: 'https://img.icons8.com/emoji/50/000000/ghost-emoji.png',
+                    content: ‘<h1> Nob Hill Inn San Francisco, CA</h1>’
+                },
+                    ];
+                for (let i = 0; i < markers.length; i++) {
+                    addMarker(markers[i]);
+                }
+                function addMarker(props) {
+                    let marker = new google.maps.Marker({
+                        position: props.coords,
+                        map: map,
+                    });
+                        if (props.iconImage) {
+                            marker.setIcon(props.iconImage);
+                        }
+                        if (props.content) {
+                            let infoWindow = new google.maps.infoWindow({
+                                content: props.content
+                            });
+                            marker.addListener(‘click’, function() {
+                                infoWindow.open(map, marker);
+                            });
+                        }
+                }
+            }
         </script>
+        <main>
+            {{{ body }}}
+        </main>
+        <footer>
+            WAS IT SCARY ENOUGH!!!
+        </footer>
+    </body>
 
-</body>
+        <script async
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwFT8x2XVd9_5nBdYwRsGS-52FIeQxaiE&callback=initMap">
+    </script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="/javascript/logout.js"></script>
 </html>
