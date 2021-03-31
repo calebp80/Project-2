@@ -1,7 +1,9 @@
 const axios = require('axios');
 const fs = require('fs');
 const cheerio = require('cheerio');
-const { Location } = require('./models/location');
+const sequelize = require('sequelize');
+const { bulkCreate } = require('./models/location');
+
 
 const scrapedLinks = [];
 const scrapedLocations = [];
@@ -835,7 +837,20 @@ const scrapeLocations = (startIndex) => {
     }).then(() => {
         // at top of file, require Location model
         // bulk insert data into sequelize db
-        
+        bulkCreate([{
+        title: '',
+		address: '',
+		image_url: '',
+		more_info_url: '', 
+		description: ''
+        }])
+        // BulkCreateFromTemplate(template = scrapeLocations,
+        //     title,
+        //     address,
+        //     image_url,
+        //     more_info_url,
+        //     description,
+        // )
         console.log('// TODO: Write data to db');
         console.log(scrapedLocations);
     }).catch(err => {
