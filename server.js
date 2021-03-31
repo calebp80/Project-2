@@ -2,18 +2,21 @@ const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
+const helpers = require('./utils/helpers.js');
 
 const routes = require("./controllers/index.js");
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-const sequelize = require('./config/connection');
+const sequelize = require('./config/connection.js');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const sess = {
   secret: 'Super secret secret',
-  cookie: {},
+  cookie: {
+    expires: 720000
+  },
   resave: false,
   saveUninitialized: true,
   store: new SequelizeStore({
@@ -22,9 +25,15 @@ const sess = {
 };
 
 app.use(session(sess));
-const helpers = require('./utils/helpers');
+
 
 app.engine('handlebars', exphbs({helpers}));
+app.engine('hbs', exphbs({
+  layoutsDir: __dirname + '/views/layouts',
+  extname: 'hbs',
+  defaultLayout: 'main'
+}));
+
 app.set('view engine', 'handlebars');
 
 

@@ -7,28 +7,28 @@ const id = window.location.toString().split('/')[
     window.location.toString().split('/').length -1
 ];
 
-await fetch(`/review/${id}`, {
+const title = document.querySelector('input[name-"post-title"]').value;
+const post_text = document.querySelector('textarea[name="post-text"]').value;
 
-method: 'PUT',
-body: JSON.stringify({
-    title,
-    post_text
-}),
-headers: {
-    'Content-Type' : 'application/json'
+const response = await fetch(`/review/${id}`, {
+
+    method: 'PUT',
+    body: JSON.stringify({
+        title,
+        post_text
+    }),
+    headers: {
+        'Content-Type' : 'application/json'
+    }
+
+    });
+
+    if (response.ok) {
+        document.location.replace('/dashboard/');
+
+    } else {
+        alert(response.statusText);
+    }
 }
 
-});
-
-
-
-
-if (response.ok) {
-    document.location.replace('/dashboard/');
-
-} else {
-alert(response.statusText);
-
-}
-}
 document.querySelector('.edit-post-form').addEventListener('submit',editFormHandler);

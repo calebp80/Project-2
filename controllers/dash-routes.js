@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Review, User, } = require('../models');
-const withAuth = require('../utils/auth');
+const withAuth = require('../utils/auth.js');
 
 // get all reviews for dashboard
 router.get('/review', withAuth, (req, res) => {
@@ -31,7 +31,7 @@ router.get('/review', withAuth, (req, res) => {
   })
     .then(dbReviewData => {
       const reviews = dbReviewData.map(review => review.get({ plain: true }));
-      res.render('all-review', {layout:"dashboard", review });
+      res.render('all-review', {layout:"dashboard", reviews });
     })
     .catch(err => {
       console.log(err);
@@ -46,12 +46,12 @@ router.get('/edit/:id', withAuth, (req, res) => {
       'id',
       'body',
       'title',
-      'createdAt'
+      'created_at'
     ],
     include: [
       {
         model: Review,
-        attributes: ['id', 'body', 'review_id', 'user_id', 'createdAt'],
+        attributes: ['id', 'body', 'review_id', 'user_id', 'created_at'],
         include: {
           model: User,
           attributes: ['username']
@@ -81,7 +81,7 @@ router.get('/edit/:id', withAuth, (req, res) => {
 });
 
 router.get("/new", withAuth, (req, res) => {
-    res.render("new-review", {
+    res.render("review", {
       layout: "dashboard"
     });
   });

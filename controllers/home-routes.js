@@ -46,7 +46,7 @@ router.get('/review/:id', (req, res) => {
     })
       .then(dbReviewData => {
         if (!dbReviewData) {
-          res.status(404).json({ message: 'No haunged review found with this id' });
+          res.status(404).json({ message: 'No haunted review found with this id' });
           return;
         }
   

@@ -1,6 +1,7 @@
-const router = require("express").Router();
+const router = require('express').Router();
+const sequelize = require('../../config/connection.js')
 const { Review } = require("../../models/");
-const withAuth = require("../../utils/auth");
+const withAuth = require("../../utils/auth.js");
 
 //find all reviews
 router.get("/", (req, res) => {
