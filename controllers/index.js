@@ -8,7 +8,7 @@ const dashRoutes = require('./dash-routes.js')
 router.use('/user', userRoutes);
 //router.use('/location', locationRoutes);
 router.use('/review', reviewRoutes);
-router.use('/home', homeRoutes);
+router.use('/', homeRoutes);
 router.use('/dash', dashRoutes);
 
 

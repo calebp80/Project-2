@@ -2,11 +2,28 @@ const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { User, Review } = require('../models');
 const bcrypt = require('bcrypt');
+//const sequelize = require("sequelize");
 
 
 
 
-
+//create new review
+router.post("/create", (req, res) => {
+    // expects => {body: "This is the comment", user_id: 1, post_id: 2}
+    if (req.session) {
+      Review.create({
+        body: req.body.body,
+        user_id: req.session.user_id,
+        post_id: req.body.post_id,
+      })
+        .then((dbReviewData) => res.json(dbReviewData))
+        //res.render("main")
+        .catch((err) => {
+          console.log(err);
+          res.status(400).json(err);
+        });
+    }
+  });
 
 
 
@@ -68,7 +85,7 @@ router.get('/review/:id', (req, res) => {
   
         const review = dbReviewData.get({ plain: true });
   
-        res.render('main', {
+        res.render('review', {
           review,
           loggedIn: req.session.loggedIn
         });
@@ -89,7 +106,7 @@ router.get('/review/:id', (req, res) => {
 
 router.get('/login', (req, res) => {
   if (req.session.loggedIn) {
-    res.redirect('/dashboard');
+    res.redirect('/');
     return;
   }
 
@@ -108,7 +125,7 @@ router.get('/signup', (req, res) => {
       return;
     }
   
-    res.render('sign-up');
+    res.render('login');
   });
 
  
