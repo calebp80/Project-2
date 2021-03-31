@@ -7,7 +7,7 @@
     flex-wrap: wrap;
     align-items: flex-start;
   }
-  .intro h2 {
+.intro h2 {
     font-size: 55px;
     color: purple;
     margin-bottom: 35px;
