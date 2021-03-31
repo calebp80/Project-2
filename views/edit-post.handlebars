@@ -3,13 +3,13 @@
     <h2>Edit Post</h2>
     <form class="edit-post-form">
         <div>
-            <input type="text" name="post-title" value="{{post.title}}" />
+            <input type="text" name="post-title" value="{{review.title}}" />
             <br><br>
             <textarea id="post-text" name="post-text"></textarea>
-            <p>{{post.post_text}}</p>
+            <p>{{review.review_text}}</p>
         </div>
         <div>
-            <a href="">{{post.comments.length}} {{format_plural "comment" post.comments.length}}</a>
+            <a href="">{{post.review.length}} {{format_plural "review" post.review.length}}</a>
         </div>
         <button type="submit">Save Post</button>
         <button type="button" class="delete-post-btn">Delete Post</button>
@@ -27,6 +27,6 @@
 
 {{> comments post.comments}}
 
-<script></script>
-<script></script>
-<script></script>
+<script src="/javascript/edit-review.js"></script>
+<script src="/javascript/delete-review.js"></script>
+<script src="/javascript/review.js"></script>

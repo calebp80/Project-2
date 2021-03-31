@@ -3,11 +3,13 @@ const userRoutes = require('./api/user-routes.js');
 // const locationRoutes = require('./api/location-routes');
 const reviewRoutes = require('./api/review-routes');
 const homeRoutes = require('./home-routes.js');
+const dashRoutes = require('./dash-routes.js')
 
 router.use('/user', userRoutes);
 // router.use('/location', locationRoutes);
 router.use('/review', reviewRoutes);
-router.use('/', homeRoutes);
+router.use('/home', homeRoutes);
+router.use('/dash', dashRoutes);
 
 
 

@@ -1,10 +1,10 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const { Review, User, Location } = require('../models');
+const { Review, User, } = require('../models');
 const withAuth = require('../utils/auth');
 
-// get all posts for dashboard
-router.get('/', withAuth, (req, res) => {
+// get all reviews for dashboard
+router.get('/review', withAuth, (req, res) => {
   console.log(req.session);
   console.log('======================');
   Post.findAll({
@@ -19,8 +19,8 @@ router.get('/', withAuth, (req, res) => {
     ],
     include: [
       {
-        model: Comment,
-        attributes: ['id', 'body', 'post_id', 'user_id', 'createdAt'],
+        model: Review,
+        attributes: ['id', 'body', 'review_id', 'user_id', 'createdAt'],
         
       },
       {
@@ -29,9 +29,9 @@ router.get('/', withAuth, (req, res) => {
       }
     ]
   })
-    .then(dbPostData => {
-      const posts = dbPostData.map(post => post.get({ plain: true }));
-      res.render('all-post', {layout:"dashboard", posts });
+    .then(dbReviewData => {
+      const reviews = dbReviewData.map(review => review.get({ plain: true }));
+      res.render('all-review', {layout:"dashboard", review });
     })
     .catch(err => {
       console.log(err);
@@ -50,8 +50,8 @@ router.get('/edit/:id', withAuth, (req, res) => {
     ],
     include: [
       {
-        model: Comment,
-        attributes: ['id', 'body', 'post_id', 'user_id', 'createdAt'],
+        model: Review,
+        attributes: ['id', 'body', 'review_id', 'user_id', 'createdAt'],
         include: {
           model: User,
           attributes: ['username']
@@ -63,12 +63,12 @@ router.get('/edit/:id', withAuth, (req, res) => {
       }
     ]
   })
-    .then(dbPostData => {
-      if (dbPostData) {
-        const post = dbPostData.get({ plain: true });
+    .then(dbReviewData => {
+      if (dbReviewData) {
+        const review = dbReviewData.get({ plain: true });
         
-        res.render('edit-post', {
-          post,
+        res.render('edit-review', {
+          review,
           loggedIn: true
         });
       } else {
@@ -81,7 +81,7 @@ router.get('/edit/:id', withAuth, (req, res) => {
 });
 
 router.get("/new", withAuth, (req, res) => {
-    res.render("new-post", {
+    res.render("new-review", {
       layout: "dashboard"
     });
   });
