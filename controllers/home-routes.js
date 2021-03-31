@@ -3,19 +3,35 @@ const sequelize = require('../config/connection');
 const { User, Review } = require('../models');
 const bcrypt = require('bcrypt');
 
+
+
+
+
+
+
+
+
+
+
 // get all reviews for homepage
+
+
 router.get("/review", (req, res) => {
     Review.findAll({
       include: [User],
     })
       .then((dbReviewData) => {
         const review = dbReviewData.map((review) => get({ plain: true }));
-        res.render("all-review", { review });
+        res.render("homepage", { review });
       })
       .catch((err) => {
         res.status(500).json(err);
       });
   });
+
+
+
+
 
 // get single review
 router.get('/review/:id', (req, res) => {
@@ -46,13 +62,13 @@ router.get('/review/:id', (req, res) => {
     })
       .then(dbReviewData => {
         if (!dbReviewData) {
-          res.status(404).json({ message: 'No haunged review found with this id' });
+          res.status(404).json({ message: 'No haunted review found with this id' });
           return;
         }
   
         const review = dbReviewData.get({ plain: true });
   
-        res.render('single-review', {
+        res.render('main', {
           review,
           loggedIn: req.session.loggedIn
         });

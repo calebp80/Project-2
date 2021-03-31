@@ -71,6 +71,16 @@ router.post("/login", (req, res) => {
 
 
 
+  router.get("/users", function(req, res) {
+    
+    (function(userData) {
+        //render your page and then on your .handlebars file tell it what kind of data to expect, which in this case will be called user_data      
+         res.render("homepage", { user_data: userData });
+     });
+ });
+
+
+
 router.post("/logout", (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {

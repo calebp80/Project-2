@@ -22,6 +22,7 @@ router.post("/create", (req, res) => {
       post_id: req.body.post_id,
     })
       .then((dbReviewData) => res.json(dbReviewData))
+      //res.render("main")
       .catch((err) => {
         console.log(err);
         res.status(400).json(err);
@@ -39,7 +40,7 @@ router.delete("/delete/:id", (req, res) => {
     })
       .then((dbReviewData) => {
         if (!dbReviewData) {
-          res.status(404).json({ message: "No comment found with this id!" });
+          res.status(404).json({ message: "No review found with this id!" });
           return;
         }
         res.json(dbReviewData);
@@ -50,5 +51,27 @@ router.delete("/delete/:id", (req, res) => {
       });
   }
 });
+
+//update a review by id
+router.put("/edit/:id", (req, res) => {
+    if (req.session) {
+      Review.update({
+        where: {
+          id: req.params.id,
+        },
+      })
+        .then((dbReviewData) => {
+          if (!dbReviewData) {
+            res.status(404).json({ message: "No review found with this id!" });
+            return;
+          }
+          res.json(dbReviewData);
+        })
+        .catch((err) => {
+          console.log(err);
+          res.status(500).json(err);
+        });
+    }
+  });
 
 module.exports = router;
