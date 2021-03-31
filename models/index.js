@@ -1,6 +1,6 @@
 const User = require("./user");
 const Review = require("./review");
-const Location = require("./location");
+//const Location = require("./location");
 //const Post = require("./post");
 
 // Post.belongsTo(User, {
@@ -16,12 +16,12 @@ Review.belongsTo(User, {
   onDelete: "CASCADE",
 });
 
-Review.belongsTo(Location);
-Location.hasMany(Review);
+//Review.belongsTo(Location);
+//Location.hasMany(Review);
 
 // Post.hasMany(Review, {
 //   foreignKey: "post_id",
 //   onDelete: "CASCADE",
 // });
 
-module.exports = {  User, Review, Location };
+module.exports = {  User, Review };
