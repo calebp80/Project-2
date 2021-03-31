@@ -1,0 +1,9 @@
+.hero {
+    background-image: url(file:///Users/calebportales/Project-2/spooky-clipart-background-2.jpg);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
