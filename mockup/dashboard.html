@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haunted Locations</title>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#" class="">Haunted Locations</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="login.html">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+    <h3>THE HAUNTED MAPS!</h3>
+    <div id="map">
+        <script>
+            function initMap() {
+                let uluru = {lat: -25.363, lng: 131.044};
+                let map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 4,
+                    center: uluru
+                });
+                let marker = new.google.maps.Marker({
+                    position: uluru,
+                    map: map
+                });
+            }
+        </script>
+    </div>
+    <main>
+        <div>
+            <p>Please choose which</p>
+        </div>
+    </main>
+
+</body>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNb--wMAufjSpIIhVNFQMQ43AmTNdsfmI">
+    </script>
+</html>
