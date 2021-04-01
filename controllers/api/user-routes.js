@@ -83,6 +83,27 @@ router.put('/:id', (req, res) => {
     });
 });
 
+router.post('/signup', (req, res) => {
+  User.create({
+    nameF: req.body.nameF,
+    nameL: req.body.nameL,
+    username: req.body.username,
+    password: req.body.password
+  })
+  .then(dbUserData => {
+    req.session.save(() => {
+      req.session.d_id = dbUserData.d_id;
+      req.session.username = dbUserData.username;
+      req.session.loggedIn = true;
+      res.json(dbUserData);
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.status(500).json(err);
+  })
+});
+
 router.delete('/:id', (req, res) => {
   User.destroy({
     where: {
