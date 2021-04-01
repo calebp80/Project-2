@@ -1,69 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
+function initMap() {
+    let options = {
+        zoom: 4,
+        center: {lat: 37.0902, lng: -95.7129},
+    }
+    let map = new.google.maps.Map(document.getElementById('map'), options);
 
-<head>
-    <meta charset="UTF-8">
-    {{!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> --}}
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HaUnTeD LoCaTiOnS!!!!!</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="/stylesheets/style.css">
-    
-    <style>
-        #map {
-            height: 400px;
-            width: 100%;
-        }
-    </style>
-</head>
-    <body>
-        <nav>
-            <div>
-                <a href="#"></a>
-            <ul>
-                <li> <a href="/">Home</a> </li>
-                <li> <a href="/dashboard">dashboard</a></li>
-                <li> <a href="/login">login</a></li>
-                <li> <a href="/signup">signup</a></li>
-
-            </ul>
-
-            
-            </div>
-        </nav>                     
-        <h3>THE HAUNTED MAPS!</h3>
-        <div id="map">
-            
-        </div>
-        <footer>
-            WAS IT SCARY ENOUGH!!!
-        </footer>
-            <script>
-    function initMap () {
-      var options = {
-        zoom:4,
-        center: { lat: 37.0902, lng: -95.7129 },
-
-      }
-      //new map
-      var map = new google.maps.Map(document.getElementById('map'), options);
-      /*
-      //marker
-      var marker = new google.maps.Marker({
-        position: { lat: 34.0522, lng: -118.2437 },
-        map:map,
-        icon: "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
-      });
-      
-      var infoWindow = new google.maps.InfoWindow({
-        content: '<h1> Los Angeles, CA </h1>'
-      });
-      marker.addListener('click', function(){
-        infoWindow.open(map, marker);
-      });
-      */
-      //array of markers 
-      var markers = [
+    let markers = [
         {
             coords: { lat: 38.2106, lmg: -119.0171},
             iconImage: 'https://img.icons8.com/emoji/50/000000/ghost-emoji.png',
@@ -179,48 +121,43 @@
             iconImage: 'https://img.icons8.com/emoji/50/000000/ghost-emoji.png',
             content: 'Nob Hill Inn San Francisco, CA'
         }
-    ];            
-        
-      //loop through markers
-      for(var i = 0;i < markers.length;i++){
+    ];
+    for (let i = 0; i < markers.length; i++) {
         addMarker(markers[i]);
-      }
-   
-      //add marker function
-      function addMarker(props){
-        //marker
-      var marker = new google.maps.Marker({
-        position: props.coords,
-        map:map,
-       // icon:props.iconImage
-      });
-        //checking for custom icon
-        if (props.iconImage){
-          //set icon image
-          marker.setIcon(props.iconImage);
-          
-        }
-        // check content 
-        if (props.content){
-          var infoWindow = new google.maps.InfoWindow({
-        content:props.content
-      });
-      marker.addListener('click', function(){
-        infoWindow.open(map, marker);
-      });
-        }
-      }
     }
-   
-    </script>
-    </body>
+    function addMarker(props) {
+        let marker = new.google.maps.Marker({
+            position: props.coords,
+            map: map,
+        });
+            if (props.iconImage) {
+                marker.setIcon(props.content);
+            }
+            if (props.content) {
+                let infoWindow = new google.maps.infoWindow({
+                    content: props.content
+                });
+                marker.addListener('click', function() {
+                    infoWindow.open(map, marker);
+                });
+            }
+    }
+}
 
-        <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0o4awM4dEP0VGA6ETurpq9v0Pp9DfvU8&callback=initMap">
-    </script>
+function getMap() {
+    resetPage();
+    $.ajax({type: "GET",
+            data: {
+                apiKey: "AIzaSyBNb--wMAufjSpIIhVNFQMQ43AmTNdsfmI",
+                q_track: SearchTerms,
+                format: "jsonp",
+                callback: "jsonp_callback",
+                page_size: 50,
+            },
+            url: "https://localhost:3001",
+            dataType: "jsonp",
+            jsonpCallback: 'jsonp_callback',
+            contentType: 'application/json'})
+}
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    {{!-- <script src="/javascript/logout.js"></script> --}}
-    {{!-- <script src="../../models/main.js"></script> --}}
-</html>
-
+initMap();
