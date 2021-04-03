@@ -1,0 +1,23 @@
+{{> post-info post}}
+{{#if}}
+<form class="comment-form">
+    <div>
+        <textarea name="comment-body"></textarea>
+    </div>
+
+    <div>
+        <button type="submit">Add Comment</button>
+    </div>
+</form>
+{{/if}}
+
+{{> review post.review}}
+
+{{#if}}
+<script src=""></script>
+{{/if}}
+
+
+
+
+<script src="javascript/review.js"></script>

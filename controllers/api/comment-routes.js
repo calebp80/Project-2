@@ -10,8 +10,9 @@ router.get('/', (req, res) => {
         res.status(500).json(err);
       });
   });
+
   
-  router.post('/', withAuth, (req, res) => {
+  router.post('/create', withAuth, (req, res) => {
     // expects => {comment_text: "This is the comment", user_id: 1, post_id: 2}
     Comment.create({
       comment_text: req.body.comment_text,
@@ -19,11 +20,13 @@ router.get('/', (req, res) => {
       post_id: req.body.post_id
     })
       .then(dbCommentData => res.json(dbCommentData))
+      res.render('comment')
       .catch(err => {
         console.log(err);
         res.status(400).json(err);
       });
   });
+
   
   router.delete('/:id', withAuth, (req, res) => {
     Comment.destroy({
