@@ -16,20 +16,36 @@
         }
     </style>
 </head>
+    
     <body>
-        <nav>
-            <div>
-                <a href="#"></a>
-            <ul>
-                <li> <a href="/">Home</a> </li>
-                <li> <a href="/dashboard">dashboard</a></li>
-                <li> <a href="/login">login</a></li>
-                <li> <a href="/signup">signup</a></li>
+       <div class="wrapper">
+           <header>
 
-            </ul>
+               <h1>
+                   <a href="/" class="navbar navbar-brand"><i class="fas fa-cube fa-2x"></i></a>
+               </h1>
+               <nav class="navbar navbar-brand p-3">
+                   <div>
+                       <form class="search-review-form">
+                           {{#if loggedIn}}
+                           <button class="btn btn-sm btn-outline-primary"><a href="">Sign Out</a></button>
+                           {{else}}
+                           <button class="btn btn-sm btn-outline-primary" type="submit"><a href="/login">Sign In</a>
+                           </button> 
+                           <button class="btn btn-sm btn-online-primary" type="submit"> <a
+                            href="/signup">Sign Up!</a></button>
+                        {{/if}}
 
-            
-            </div>
+                        <input type="text" class="col-form-label-sm" id="searched-title" name="searched-title" placeholder="Enter Spooky Loaction" />
+
+                        <button type="button" class="btn btn-sm btn-outline-sucess searched-btn" id="searct-review-btn">
+                            ghost-emoji
+                        </button>  
+                       </form>
+                   </div>
+               </nav>
+           </header>
+       </div>
         </nav>                     
         <h3>THE HAUNTED MAPS!</h3>
         <div id="map"></div>
@@ -373,13 +389,17 @@
    
     </script>
     </body>
+    <footer class="footer">
+        Evan Teems, Toby Moore, Caleb Portales, and Albert Rodriguez!
+    </footer>
 
         <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0o4awM4dEP0VGA6ETurpq9v0Pp9DfvU8&callback=initMap">
     </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    {{!-- <script src="/javascript/logout.js"></script> --}}
+    <script src="../../public/javascript/logout.js"></script>
+    
     {{!-- <script src="../../models/main.js"></script> --}}
 </html>
 

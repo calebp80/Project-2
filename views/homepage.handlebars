@@ -1,10 +1,16 @@
-<img src="" alt="">
-<h3 class="flow">Hello! You want to see our SCARY LOCATIONS. How bold OF YOU!</h3>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container banner">
+        <h1 class="display-4 banner">Welcome to our Spooky Locations! <i class="fas fa-cube banner"></i></h1>
+        <p class="banner">Spooky Location reviews</p>
+    </div>
+</div>
 
-<div class="row s8">
+<h3>
+    <p href="/">Recent Reviews</p>
+</h3>
 
-    {{> am-table}}
-
-    {{> pm-table}}
-
+<div class="container">
+    {{#each posts as |post|}}
+    {{> post-info post}}
+    {{/each}}
 </div>

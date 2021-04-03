@@ -1,4 +1,26 @@
-{{> post-info post }}
+<article class="post">
+  <div class="title">
+    <h1>
+      {{post.title}}
+    </h1>
+  </div>
+      reviewed by {{post.user.username}} on {{format_date post.createdAt}}
+  <div class="row">
+    <div class="col p-4">
+        <img src="{{post.post_url}}" alt="">
+    </div>
+    <div class="col-8 p-4">
+      {{post.post_content}}
+    </div>
+  </div>
+
+</article>
+
+<div>
+  <h3>
+    <p>{{comments.length}} Comment Section</p>
+  </h3>
+</div>
 
 {{#if loggedIn}}
 <form class="comment-form">
@@ -7,8 +29,7 @@
   </div>
 
   <div>
-    <button type="submit">add comment</button>
-    <button type="button" class="upvote-btn">upvote</button>
+      <button type="submit" class="comment-btn">Comment</button>
   </div>
 </form>
 {{/if}}
@@ -16,6 +37,5 @@
 {{> comments post.comments}}
 
 {{#if loggedIn}}
-<script src="/javascript/comment.js"></script>
-
+<script src="../public/javascript/comment.js"></script>
 {{/if}}

@@ -49,9 +49,6 @@ User.init(
     underscored: true,
     modelName: 'User'
   },
-  {
-    sequelize
-  }
 );
 
 module.exports = User;

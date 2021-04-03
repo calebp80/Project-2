@@ -31,12 +31,11 @@ router.get('/', withAuth, (req, res) => {
   })
     .then(dbPostData => {
       const posts = dbPostData.map(post => post.get({ plain: true }));
-      res.render('all-post', {layout:"dashboard", posts });
+      res.render('dashboard', {posts, loggedIn: true });
     })
     .catch(err => {
       console.log(err);
-    //   res.status(500).json(err);
-      res.redirect('login');
+      res.status(500).json(err);
     });
 });
 
@@ -79,11 +78,5 @@ router.get('/edit/:id', withAuth, (req, res) => {
       res.status(500).json(err);
     });
 });
-
-router.get("/new", withAuth, (req, res) => {
-    res.render("post", {
-      layout: "dashboard"
-    });
-  });
 
 module.exports = router;
