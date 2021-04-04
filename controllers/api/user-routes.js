@@ -2,8 +2,8 @@ const router = require("express").Router();
 const { User, Post, Review } = require("../../models");
 const withAuth = require("../../utils/auth");
 
-//find all users
-router.post('/', (req, res) => {
+//create new user ------------------------------------works
+router.post('/signup', (req, res) => {
   User.create({
     username: req.body.username,
     password: req.body.password
@@ -22,7 +22,7 @@ router.post('/', (req, res) => {
       res.status(500).json(err);
     });
 });
-
+//------------------------------------------------works
 router.post('/login', (req, res) => {
   User.findOne({
     where: {
@@ -51,7 +51,7 @@ router.post('/login', (req, res) => {
   });
 
 });
-
+//----------------------------------------------------works
 router.post('/logout', (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
@@ -63,7 +63,10 @@ router.post('/logout', (req, res) => {
   }
 });
 
-router.put('/:id', (req, res) => {
+
+
+//-----------------------------------------------------works
+router.put('/update/:id', (req, res) => {
   User.update(req.body, {
     individualHooks: true,
     where: {
@@ -83,7 +86,11 @@ router.put('/:id', (req, res) => {
     });
 });
 
-router.delete('/:id', (req, res) => {
+
+
+
+//-----------------------------------------------------------working
+router.delete('/delete/:id', (req, res) => {
   User.destroy({
     where: {
       id: req.params.id
