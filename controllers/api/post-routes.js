@@ -3,7 +3,7 @@ const sequelize = require('../../config/connection')
 const { Post, User, Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-//find all reviews
+//find all posts
 router.get("/", (req, res) => {
   console.log('====================');
   Post.findAll({
@@ -72,8 +72,9 @@ router.get('/:id', (req, res) => {
       res.status(500).json(err);
     });
 });
-//create new review
-router.post("/", withAuth, (req, res) => {
+
+//create new post
+router.post("/create", withAuth, (req, res) => {
   // expects => {body: "This is the comment", user_id: 1, post_id: 2}
   Post.create({
     title: req.body.title,
@@ -87,7 +88,7 @@ router.post("/", withAuth, (req, res) => {
     });
 });
 
-router.put('/:id', withAuth, (req, res) => {
+router.put('/edit/:id', withAuth, (req, res) => {
   Post.update(
     {
       title: req.body.title
@@ -110,8 +111,9 @@ router.put('/:id', withAuth, (req, res) => {
       res.status(500).json(err);
     });
 });
-//delete a review by id
-router.delete('/:id', withAuth, (req, res) => {
+
+//delete a post by id
+router.delete('/delete/:id', withAuth, (req, res) => {
   console.log('id', req.params.id);
   Post.destroy({
     where: {

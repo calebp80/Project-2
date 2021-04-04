@@ -3,7 +3,7 @@ const { User, Post, Review } = require("../../models");
 const withAuth = require("../../utils/auth");
 
 //find all users
-router.post('/', (req, res) => {
+router.post('/signup', (req, res) => {
   User.create({
     username: req.body.username,
     password: req.body.password
@@ -63,7 +63,10 @@ router.post('/logout', (req, res) => {
   }
 });
 
-router.put('/:id', (req, res) => {
+
+
+
+router.put('/update/:id', (req, res) => {
   User.update(req.body, {
     individualHooks: true,
     where: {
@@ -83,7 +86,11 @@ router.put('/:id', (req, res) => {
     });
 });
 
-router.delete('/:id', (req, res) => {
+
+
+
+
+router.delete('/delete/:id', (req, res) => {
   User.destroy({
     where: {
       id: req.params.id

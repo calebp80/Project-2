@@ -28,7 +28,7 @@ router.get('/', (req, res) => {
   });
 
   
-  router.delete('/:id', withAuth, (req, res) => {
+  router.delete('/delete/:id', withAuth, (req, res) => {
     Comment.destroy({
       where: {
         id: req.params.id
