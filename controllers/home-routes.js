@@ -2,7 +2,7 @@ const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Post, User, Comment } = require('../models');
 
-// get all reviews for homepage
+//--------------------------------------- maybe works 
 router.get("/", (req, res) => {
   Post.findAll({
     include: [User],
@@ -16,8 +16,8 @@ router.get("/", (req, res) => {
     });
 });
 
-// get single post
-router.get('/post/:id', (req, res) => {
+// get single post ------------------works
+router.get('/home/:id', (req, res) => {
 Post.findOne({
   where: {
     id: req.params.id
@@ -61,7 +61,7 @@ Post.findOne({
     res.status(500).json(err);
   });
 });
-
+//---------------------------------------works
 router.get('/login', (req, res) => {
 if (req.session.loggedIn) {
   res.redirect('/');
@@ -69,7 +69,7 @@ if (req.session.loggedIn) {
 }
 res.render('login');
 });
-
+//----------------------------------------works
 router.get('/signup', (req, res) => {
   if (req.session.loggedIn) {
     res.redirect('/');
