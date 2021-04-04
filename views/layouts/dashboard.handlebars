@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HaUnTeD</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet"  href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheet/style.css">
     </head>
 
 <body class="card-panel green lighten-2">
@@ -16,7 +16,7 @@
         <ul>
             <li> <a href="/">Home</a> </li>
             <li> <a href="/dashboard"> Dashboard</a></li>
-            <li> <a href="#logout" id="logout"> Logout</a></li>
+            <li> <a href="#" id="logout"> Logout</a></li>
         </ul>
 
         
@@ -33,7 +33,7 @@
                         zoom: 4,
                         center: uluru
                     });
-                    let marker = new.google.maps.Marker({
+                    let marker = new google.maps.Marker({
                         position: uluru,                          
                         map: map
                     });
