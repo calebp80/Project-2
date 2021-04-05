@@ -2,6 +2,25 @@ const router = require("express").Router();
 const { User, Post, Review } = require("../../models");
 const withAuth = require("../../utils/auth");
 
+router.get('/all', (req, res) => {
+    console.log('======================');
+    Post.findAll({
+        
+        username:req.body.username,
+        password:req.body.password
+      
+        //   model: User,
+        //   attributes: ['username']
+         }
+
+    )
+      .then(dbPostData => res.json(dbPostData))
+      .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  });
+
 //create new user ------------------------------------works
 router.post('/signup', (req, res) => {
   User.create({
