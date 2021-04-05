@@ -1,0 +1,29 @@
+Reviews:
+create a review: POST/JSON /review/create 
+find all reviews: GET/JSON /review
+delete a review: DELETE/Body /review/delete/"id"
+
+Users:
+signup new: POST/JSON /user/signup
+find all: GET/JSON /user/all
+login:   POST/JSON /user/login
+logout: POST/JSON /user/logout
+update user: PUT/JSON /user/update/"id"
+delete by id: DELETE/Body /user/delete/"id"
+
+Location:
+find by id: GET/JSON /location/"id"
+find all: GET/JSON /location/all
+delete by id: DELETE/Body /location/delete/"id"
+
+Home:
+find all reviews for homepage: GET/JSON /home/all
+find review by id for homepage: GET/JSON /home/review/"id"
+login from homepage: POST/JSON /home/login
+signup from homepage: POST/JSON /home/signup
+
+Dash: 
+find all reviews for dashboard: GET/JSON dash/reviews
+edit a review: PUT/Body /dash/edit/"id"
+get new reviews: GET/JSON /dash/new
+
