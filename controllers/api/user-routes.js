@@ -43,11 +43,13 @@ router.post('/signup', (req, res) => {
 });
 //------------------------------------------------works
 router.post('/login', (req, res) => {
+  console.log(req.body)
   User.findOne({
     where: {
       username: req.body.username
     }
   }).then(dbUserData => {
+    console.log("Y!!!!!!");
     if (!dbUserData) {
       res.status(400).json({ message: 'No user wuth this NAME!' })
       return;
@@ -56,10 +58,10 @@ router.post('/login', (req, res) => {
     const validPassword = dbUserData.checkPassword(req.body.password);
     
     if (!validPassword) {
-      res.status(400).json({ message: 'Incoorect Password!' });
+      res.status(400).json({ message: 'Incorrect Password!' });
       return;
     }
-
+    console.log("here");
     req.session.save(() => {
       req.session.user_id = dbUserData.id;
       req.session.username = dbUserData.username;
