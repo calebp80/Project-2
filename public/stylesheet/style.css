@@ -1,5 +1,5 @@
 .hero {
-    background-image: url(file:///Users/calebportales/Project-2/spooky-clipart-background-2.jpg);
+   
     background-size: cover;
     background-position: center;
     display: flex;
@@ -7,11 +7,35 @@
     flex-wrap: wrap;
     align-items: flex-start;
   }
-.intro h2 {
-    font-size: 55px;
-    color: purple;
-    margin-bottom: 35px;
-    padding: 0 100px 20px 100px;
-    border-bottom: 3px solid;
-    border-color: blueviolet;
+
+  body {
+    background-image: url(https://images.pond5.com/black-and-white-grunge-horror-footage-095903118_iconl.jpeg);
+    font-family: copperplate;
   }
+  nav {
+      background-color: black;
+  }
+  .brown.darken-4 {
+    background-color: black !important;
+}
+.blue-text {
+    color:rgb(201, 27, 27) !important;
+}
+.brown-text.text-darken-2 {
+    color: black !important;
+    font-size: 25px;
+
+}
+footer {
+    font-size: 30px;
+    text-shadow: 1px 1px;
+    text-align: center;
+}
+h3 {
+    text-shadow: 1px 2px;
+    text-align: center;
+}
+a.white-text.brown.darken-4 {
+    background-color: black !important;
+    text-align: center;
+}
