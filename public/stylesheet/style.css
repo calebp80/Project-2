@@ -1,16 +1,13 @@
-.hero {
-   
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    align-items: flex-start;
-  }
 
   body {
     background-image: url(https://images.pond5.com/black-and-white-grunge-horror-footage-095903118_iconl.jpeg);
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     font-family: copperplate;
+    
+
   }
   nav {
       background-color: black;
@@ -30,6 +27,9 @@ footer {
     font-size: 30px;
     text-shadow: 1px 1px;
     text-align: center;
+   
+    
+    
 }
 h3 {
     text-shadow: 1px 2px;
@@ -38,4 +38,7 @@ h3 {
 a.white-text.brown.darken-4 {
     background-color: black !important;
     text-align: center;
+}
+.green.lighten-2 {
+    background-color: black !important;
 }
